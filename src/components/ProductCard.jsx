@@ -3,7 +3,9 @@ import styles from './Product.module.css';
 
 const ProductCard = ({ product, onRemove }) => {
   return (
-    <div className={`${styles.productContainer} ${!product.inStock ? 'outOfStockClass' : ''}`}>
+    <div 
+      className={`${styles.productContainer} ${!product.inStock ? `${styles.outOfStockClass} outOfStockClass` : ''}`}
+    >
       <img src={product.image} alt={product.name} style={{ width: '100%' }} />
       <h3>{product.name}</h3>
       <p>Price: {product.price}</p>

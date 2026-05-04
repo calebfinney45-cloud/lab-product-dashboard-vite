@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductList from './components/ProductList';
 
 const initialProducts = [
@@ -10,6 +10,14 @@ const initialProducts = [
 const App = () => {
   const [products, setProducts] = useState(initialProducts);
   const [filter, setFilter] = useState('all');
+
+  useEffect(() => {
+    // Requirement 2: Select by ID and update textContent
+    const dashboardTitle = document.getElementById('header');
+    if (dashboardTitle) {
+      dashboardTitle.textContent = "Product Dashboard";
+    }
+  }, []);
 
   const filteredProducts = products.filter((product) => {
     if (filter === 'inStock') return product.inStock;
@@ -23,7 +31,8 @@ const App = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1 id='header'>Product Dashboard</h1>
+      {/* Ensure the ID exists for the useEffect and the Test */}
+      <h1 id='header'></h1>
       
       <div className='filters' style={{ marginBottom: '20px' }}>
         <button onClick={() => setFilter('all')}>All</button>
